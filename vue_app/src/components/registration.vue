@@ -17,7 +17,9 @@ let input_error = reactive({
 });
 const API_URL = 'http://localhost:8000';
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+let submit = true;
 
+//check if fields are correct entered after form submit failed
 watch(state, ()=>{
 	if(state.name !== ""){
 		input_error.name = "";
@@ -38,7 +40,7 @@ watch(state, ()=>{
 
 async function submit_form(e){
 	e.preventDefault();
-	let submit = true;
+	submit = true;
 
 	if(state.name === ""){
 		input_error.name = "Please enter a name."
@@ -64,8 +66,9 @@ async function submit_form(e){
 		return 0;
 	}
 
+	//send registration to server
 	let credentials = JSON.stringify(state);
-	res = await axios({
+	let res = await axios({
 		method: 'post',
 		url: `${API_URL}/registration`,
 		data: credentials,
@@ -76,7 +79,7 @@ async function submit_form(e){
 </script>
 
 <template>
-<form v-on:click="submit_form">
+<form>
 	<label for="name">name</label>
 	<input type="text" name="name" v-model="state.name">
 	<div class="input_error">{{input_error.name}}</div>
@@ -91,7 +94,7 @@ async function submit_form(e){
 	<input type="password" name="confirm_password" v-model="state.confirm_password">
 	<div class="input_error">{{input_error.confirm_password}}</div>
 	<div class="input_error">{{input_error.passwords_not_equal}}</div>
-	<input type="submit" value="submit">
+	<input type="submit" value="submit" v-on:click="submit_form">
 </form>
 </template>
 
