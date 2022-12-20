@@ -75,6 +75,7 @@ async function submit_form(e){
 		headers: {'Content-Type': 'application/json'}
 	});
 
+	console.log(res.data);
 }
 </script>
 
