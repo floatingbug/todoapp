@@ -17,7 +17,11 @@ module.exports = {
 		finally{
 			client.close();
 		}
-		
-		return result;
+		if(result === null){
+			return 0;
+		}
+		else{
+			return 2;
+		}
 	}, 
 };
