@@ -11,7 +11,7 @@ module.exports = async (req, res)=>{
 
 	//if http-method is GET complete registration
 	if(req.method === 'GET'){
-		
+		let reg_code = req.query.reg;
 	}
 
 	//if credentials are not valid, send error
@@ -99,7 +99,7 @@ async function sendEmail(credentials){
 		from: 'tomschreibmir@gmail.com',
 		to: credentials.email,
 		subject: 'todoapp registration',
-		html: `<p>please click<a href="http://${API_URL}/registration/${credentials.reg_code}">here</a></p>`
+		html: `<p>please click<a href="http://${API_URL}/registration?reg=${credentials.reg_code}">here</a></p>`
 	};
 
 	try{
