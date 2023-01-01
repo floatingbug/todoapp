@@ -2,11 +2,17 @@ const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const module_check_existence = require('../module/module_check_existence');
 const module_add_user = require('../module/module_add_user');
 const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
+const API_URL = process.env.API_URL || 'localhost:8000';
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res)=>{
 	let credentials = req.body;
 	let result;
+
+	//if http-method is GET complete registration
+	if(req.method === 'GET'){
+		
+	}
 
 	//if credentials are not valid, send error
 	//with err_code: 1 to client.
@@ -93,7 +99,7 @@ async function sendEmail(credentials){
 		from: 'tomschreibmir@gmail.com',
 		to: credentials.email,
 		subject: 'todoapp registration',
-		html: `<p>please click<a href="http://localhost:8000/${credentials.reg_code}">here</a></p>`
+		html: `<p>please click<a href="http://${API_URL}/registration/${credentials.reg_code}">here</a></p>`
 	};
 
 	try{
