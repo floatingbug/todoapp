@@ -3,10 +3,12 @@ import App from './App.vue'
 import {createRouter, createWebHashHistory} from 'vue-router';
 import home from './components/home.vue';
 import registration from './components/registration.vue';
+import login from './components/login.vue';
 
 const routes = [
 	{path: '/', component: home},
-	{path: '/registration', component: registration}
+	{path: '/registration', component: registration},
+	{path: '/login', component: login}
 ];
 
 const router = createRouter({

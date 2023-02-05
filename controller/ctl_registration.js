@@ -4,7 +4,6 @@ const module_add_user = require('../module/module_add_user');
 const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 const API_URL = process.env.API_URL || 'localhost:8000';
 const nodemailer = require('nodemailer');
-const module_removeConfirmCode = require('../module_removeConfirmCode');
 
 module.exports = async (req, res)=>{
 	let credentials = req.body;
