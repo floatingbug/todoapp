@@ -10,15 +10,6 @@ module.exports = async (req, res)=>{
 	let credentials = req.body;
 	let result;
 
-	//if http-method is GET complete registration
-	if(req.method === 'GET'){
-		let reg_code = req.query.reg;
-		
-		result = await module_removeConfirmCode(reg_code);
-		
-		
-	}
-
 	//if credentials are not valid, send error
 	//with err_code: 1 to client.
 	if(!check_credentials(credentials)){
