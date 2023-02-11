@@ -4,11 +4,13 @@ import {createRouter, createWebHashHistory} from 'vue-router';
 import home from './components/home.vue';
 import registration from './components/registration.vue';
 import login from './components/login.vue';
+import todo from  './components/todo.vue';
 
 const routes = [
 	{path: '/', component: home},
 	{path: '/registration', component: registration},
-	{path: '/login', component: login}
+	{path: '/login', component: login},
+	{path: '/todo', component: todo}
 ];
 
 const router = createRouter({

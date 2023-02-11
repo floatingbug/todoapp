@@ -21,5 +21,4 @@ module.exports = async (req, res)=> {
 	}
 	
 	res.redirect(login_url);
->>>>>>> f0bf8cfc643f45fc8ea6edefdf3b80774da14ff8
 };

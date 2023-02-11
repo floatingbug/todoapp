@@ -1,27 +1,56 @@
 <script setup>
-import {ref, reactive} from 'vue'
+import {ref, reactive, watch} from 'vue';
+import {useRouter} from 'vue-router';
 import axios from 'axios';
 
+const router = useRouter();
 let ref_form = ref(null);
 let state = reactive({
 	name: "",
-	password: ""
+	password: "",
+	field_missed: false
 });
 
+//check if user entered name and password after trying to send one missed
+watch(()=> state.name, (name)=>{
+	if(state.name !== "" && state.password !== ""){
+		state.field_missed = false;
+	}
+});
+watch(()=> state.password, (password)=>{
+	if(state.name !== "" && state.password !== ""){
+		state.field_missed = false;
+	}
+});
+
+//send form data
 async function submitForm(e){
+	let res;
+
+	if(state.name === "" || state.password === ""){
+		state.field_missed = true;
+		return 0;
+	}
+
 	let formData = new FormData();
-	
-	validateUserInput(state);
 
 	formData.append('name', state.name);
 	formData.append('password', state.password);
 
-	let res = await axios({
-		method: 'post',
-		url: 'http://localhost:8000/login',
-		data: formData,
-		headers: {'content-type': 'application/json'}
-	})
+	try{
+		res = await axios({
+			method: 'post',
+			url: 'http://localhost:8000/login',
+			data: formData,
+			headers: {'content-type': 'application/json'}
+		});
+	}
+	catch(error){
+		console.log("there was an error bro:", error);
+		return 0;
+	}
+	
+	router.push('/todo');
 }
 </script>
 
@@ -35,6 +64,6 @@ async function submitForm(e){
 		<label for="login">login</label>
 		<input type="submit" value="submit">
 	</form>
-
+	<p v-if="state.field_missed">please enter a name and password</p>
 </template>
 
