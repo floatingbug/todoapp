@@ -23,7 +23,7 @@ module.exports = async (req, res)=>{
 		res.send({err_code: 0});
 		return 0;
 	}
-	//render login success: create session 
+	//login success: create session 
 	res.send({msg: "login success"});
 	
 };
