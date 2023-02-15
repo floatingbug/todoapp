@@ -15,10 +15,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(cors());
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended: false}));
-app.use(session({
+/*app.use(session({
 	secret: 'foo',
 	store: mongoStore.create({ mongoUrl: 'mongodb://localhost/todo-session-store' })
 }));
+*/
 app.use('/', router);
 
 httpServer.listen(PORT);
