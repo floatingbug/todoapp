@@ -10,7 +10,7 @@ const serveStatic = require('serve-static');
 
 const PORT = process.env.PORT || 8000;
 
-app.use(express.static(__dirname + '/vue_app/dist'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(cors());
 app.use(body_parser.json());
