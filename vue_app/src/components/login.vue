@@ -2,6 +2,7 @@
 import {ref, reactive, watch} from 'vue';
 import {useRouter} from 'vue-router';
 import axios from 'axios';
+const API_URL = "https://todoapp-9sp55ojf8-floatingbug.vercel.app";
 
 const router = useRouter();
 let ref_form = ref(null);
@@ -40,7 +41,7 @@ async function submitForm(e){
 	try{
 		res = await axios({
 			method: 'post',
-			url: 'http://localhost:8000/login',
+			url: API_URL + '/login',
 			data: formData,
 			headers: {'content-type': 'application/json'}
 		});
