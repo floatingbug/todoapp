@@ -9,7 +9,7 @@ const mongoStore = require('connect-mongo');
 const serveStatic = require('serve-static');
 const PORT = process.env.PORT || 8000;
 
-app.use(serveStatic('./vue_app/dist'));
+app.use(express.static(__dirname + '/vue_app/dist'));
 
 app.use(cors());
 app.use(body_parser.json());
