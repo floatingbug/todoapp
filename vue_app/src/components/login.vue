@@ -41,7 +41,7 @@ async function submitForm(e){
 	try{
 		res = await axios({
 			method: 'post',
-			url: API_URL + '/login',
+			url: `${API_URL}/login`,
 			data: formData,
 			headers: {'content-type': 'application/json'}
 		});

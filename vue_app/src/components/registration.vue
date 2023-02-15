@@ -15,7 +15,7 @@ let input_error = reactive({
 	confirm_password: "",
 	passwords_not_equal: ""
 });
-const API_URL = 'http://localhost:8000';
+const API_URL = "https://todoapp-9sp55ojf8-floatingbug.vercel.app";
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let submit = true;
 
