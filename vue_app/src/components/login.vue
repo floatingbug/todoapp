@@ -2,7 +2,7 @@
 import {ref, reactive, watch} from 'vue';
 import {useRouter} from 'vue-router';
 import axios from 'axios';
-const API_URL = "https://todoapp-9sp55ojf8-floatingbug.vercel.app";
+const API_URL = "http://localhost:8000"
 
 const router = useRouter();
 let ref_form = ref(null);
@@ -27,12 +27,12 @@ watch(()=> state.password, (password)=>{
 //send form data
 async function submitForm(e){
 	let res;
-
+/*
 	if(state.name === "" || state.password === ""){
 		state.field_missed = true;
 		return 0;
 	}
-
+*/
 	let formData = new FormData();
 
 	formData.append('name', state.name);

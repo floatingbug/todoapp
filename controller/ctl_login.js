@@ -4,8 +4,10 @@ module.exports = async (req, res)=>{
 	const name = req.body.name;
 	const password = req.body.password;
 
+	console.log(name, password);
+	console.log(req.body);
 	//if name or password not exists, send err_code: 4
-	if(name === "" || password === ""){
+	if(name === undefined || password === undefined){
 		res.send({err_code: 4});
 		return 0;
 	}
