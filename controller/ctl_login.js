@@ -4,10 +4,8 @@ module.exports = async (req, res)=>{
 	const name = req.body.name;
 	const password = req.body.password;
 
-	console.log(name, password);
-	console.log(req.body);
 	//if name or password not exists, send err_code: 4
-	if(name === undefined || password === undefined){
+	if(name === "" || password === ""){
 		res.send({err_code: 4});
 		return 0;
 	}
@@ -26,6 +24,7 @@ module.exports = async (req, res)=>{
 		return 0;
 	}
 	//login success: create session 
+	req.session.user = {name: name};
 	res.send({msg: "login success"});
 	
 };

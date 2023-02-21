@@ -27,12 +27,12 @@ watch(()=> state.password, (password)=>{
 //send form data
 async function submitForm(e){
 	let res;
-/*
+	
 	if(state.name === "" || state.password === ""){
 		state.field_missed = true;
 		return 0;
 	}
-*/
+	
 	let formData = new FormData();
 
 	formData.append('name', state.name);
@@ -54,17 +54,26 @@ async function submitForm(e){
 	router.push('/todo');
 }
 </script>
-
 <template>
-	<h1>Login</h1>
+<div class="form_container">
 	<form ref='ref_form' v-on:submit.prevent="submitForm">
-		<label for="name">name</label>
-		<input type="text" v-model="state.name"><br>
-		<label for="password">password</label>
-		<input type="password" v-model="state.password"><br>
-		<label for="login">login</label>
-		<input type="submit" value="submit">
+		<h1>Login</h1>
+		<div class="input_flex">
+			<label for="name">name</label>
+			<input type="text" v-model="state.name">
+		</div>
+		<div class="input_flex">
+			<label for="password">password</label>
+			<input type="password" v-model="state.password">
+		</div>
+		<div class="input_flex submit">
+			<input type="submit" value="submit">
+		</div>
+		<p class="error_msg" v-if="state.field_missed">please enter a name and password</p>
 	</form>
-	<p v-if="state.field_missed">please enter a name and password</p>
+</div>
 </template>
 
+<style>
+
+</style>

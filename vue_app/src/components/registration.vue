@@ -80,27 +80,37 @@ async function submit_form(e){
 </script>
 
 <template>
-<form>
-	<label for="name">name</label>
-	<input type="text" name="name" v-model="state.name">
-	<div class="input_error">{{input_error.name}}</div>
-	<label for="email">email</label>
-	<input type="email" name="email" v-model="state.email">
-	<div class="input_error">{{input_error.email}}</div>
-	<div class="input_error">{{input_error.email_syntax}}</div>
-	<label for="password">password</label>
-	<input type="password" name="password" v-model="state.password">
-	<div class="input_error">{{input_error.password}}</div>
-	<label for="confirm_password">confirm password</label>
-	<input type="password" name="confirm_password" v-model="state.confirm_password">
-	<div class="input_error">{{input_error.confirm_password}}</div>
-	<div class="input_error">{{input_error.passwords_not_equal}}</div>
-	<input type="submit" value="submit" v-on:click="submit_form">
-</form>
+<div class="form_container">
+	<form>
+		<h1>Registration</h1>
+		<div class="input_flex">
+			<label for="name">name</label>
+			<input type="text" name="name" v-model="state.name">
+			<div class="input_error">{{input_error.name}}</div>
+		</div>
+		<div class="input_flex">
+			<label for="email">email</label>
+			<input type="email" name="email" v-model="state.email">
+			<div class="input_error">{{input_error.email}}</div>
+			<div class="input_error">{{input_error.email_syntax}}</div>
+		</div>
+		<div class="input_flex">
+			<label for="password">password</label>
+			<input type="password" name="password" v-model="state.password">
+			<div class="input_error">{{input_error.password}}</div>
+		</div>
+		<div class="input_flex">
+			<label for="confirm_password">confirm password</label>
+			<input type="password" name="confirm_password" v-model="state.confirm_password">
+			<div class="input_error">{{input_error.confirm_password}}</div>
+			<div class="input_error">{{input_error.passwords_not_equal}}</div>
+		</div>
+		<div class="input_flex submit">
+			<input type="submit" value="submit" v-on:click="submit_form">
+		</div>
+	</form>
+</div>
 </template>
 
 <style>
-.input_error{
-	color: red;
-}
 </style>
