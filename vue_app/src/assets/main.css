@@ -6,7 +6,8 @@
 .button{
 	margin-left: 5%;
 	height: 30%;
-	width: 8%;
+	min-width: 80px;
+	width: 100px;
 	text-align: center;
 	text-decoration: none;
 	border: 2px solid black;
@@ -87,8 +88,11 @@ h1 {
 	}
 }
 
-@media(max-width: 460px){
+@media(max-width: 450px){
 	label{
 		flex-basis: 180px;
+	}
+	.button{
+		margin-left: 1%;
 	}
 }
