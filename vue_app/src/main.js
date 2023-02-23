@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter, createWebHashHistory} from 'vue-router';
 import home from './components/home.vue';
-import registration from './components/registration.vue';
 import login from './components/login.vue';
+import registration from './components/registration.vue';
 import todo from  './components/todo.vue';
 
 const routes = [

@@ -57,21 +57,22 @@ async function submitForm(e){
 <template>
 <form ref='ref_form' v-on:submit.prevent="submitForm">
 	<h1>Login</h1>
-	<div class="input_flex">
-		<label for="name">name</label>
-		<input type="text" v-model="state.name">
-	</div>
-	<div class="input_flex">
-		<label for="password">password</label>
-		<input type="password" v-model="state.password">
-	</div>
-	<div class="input_flex submit">
+		<div class="input_flex">
+			<label for="name">name</label>
+			<input type="text" v-model="state.name">
+		</div>
+		<div class="input_flex">
+			<label for="password">password</label>
+			<input type="password" v-model="state.password">
+		</div>
 		<input type="submit" value="submit">
-	</div>
-	<p class="error_msg" v-if="state.field_missed">please enter a name and password</p>
+	<div class="input_error" v-if="state.field_missed">please enter a name and password</div>
 </form>
 </template>
 
-<style>
-
+<style scoped>
+.input_error {
+	margin-left: 0;
+	justify-content: center;
+}
 </style>
