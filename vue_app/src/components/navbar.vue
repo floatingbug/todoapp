@@ -3,25 +3,49 @@
 </script>
 
 <template>
-<div class="container">
-	<router-link class="button home" to="/">home</router-link>
-	<router-link class="button log" to="/login">login</router-link>
-	<router-link class="button reg" to="/registration">registration</router-link>
-	<router-link class="button user" to="#">user</router-link>
-</div>
+<ul>
+	<li><router-link to="/">Home</router-link></li>
+	<li>
+		<router-link to="/login">login</router-link>
+		<router-link to="/registration">registration</router-link>
+	</li>
+</ul>
 </template>
 
 <style>
-.container{
-	background-color: black;
-	height: 10vh;
-	border: 2px solid black;
+ul {
+	margin: 0;
 	display: flex;
+	padding: 0;
+	justify-content: space-evenly;
 	align-items: center;
-}	
-	
-.user{
-	margin-left: auto;
-	margin-right: 5%;
+	background-color: black;
+	height: 5vh;
+}
+
+li {
+	list-style-type: none;
+}
+
+li>*{
+	color:white;
+	text-decoration: none;
+}
+
+ul>li:first-child{
+	margin-right: auto;
+	margin-left: 2%;
+}
+
+ul>li:nth-child(2){
+	display: flex;
+	justify-content: space-between;
+	width: 120px;
+	margin-right:2%
+}
+
+ul>li:nth-child(2) :first-child {
+	border-right: 2px solid white;
+	padding-right: 6px;
 }
 </style>

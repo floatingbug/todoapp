@@ -80,9 +80,9 @@ async function submit_form(e){
 </script>
 
 <template>
+<h1>Registration</h1>
 <div class="form_container">
 	<form>
-		<h1>Registration</h1>
 		<div class="input_flex">
 			<label for="name">name</label>
 			<input type="text" name="name" v-model="state.name">

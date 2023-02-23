@@ -1,98 +1,37 @@
- 	body{
+body {
 	margin: 0;
 	background-color: grey;
 }
 
-.button{
-	margin-left: 5%;
-	height: 30%;
-	min-width: 80px;
-	width: 100px;
-	text-align: center;
-	text-decoration: none;
-	border: 2px solid black;
-	background-color: rgb(100,255,255,0.7);
-	color: black;
-	border-radius: 4px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.form_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 50vh;
-}
-
-form{
+form {
 	position: relative;
-	width: 50%;
-	height: 80%;
 	background-color: rgb(255,255,255,0.7);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	min-width: 50vw;
+	max-width: 50vw;
+	margin: auto;
+	top: 5vh;
+	height: 80vh;
 }
 
-.input_flex{
-	display: flex;
+
+.input_flex {
+	display:flex;
+	justify-content:space-between;
 	flex-wrap: wrap;
-	justify-content: center;
+	min-width: 0;
+	flex-shrink: 2;
 }
 
-label {
-	flex-basis: 100px;
-	font-size: 1.3rem;
+.input_flex label, input{
 }
 
-.submit {
- 	margin-top: 80px;
-}
-
-.input_flex input[type="submit"] {
-	width: 30%;
- 	height: 30px;
-}
-
-.error_msg {
- 	display: flex;
-	justify-content: center;
-	color: red;
-}
-
-.input_error {
-	color: red;
+.input_flex input {
+	min-width: 0;
+	flex-shrink: 2;
 }
 
 
-h1 {
-	color: rgb(0,0,0,0.7);
-	display: flex;
-	justify-content: center;
-}
-
-@media(max-width: 730px){
-	form{
-		width: 70%;
-	}
-}
-
-@media(min-width: 1000px){
-	form{
-		width: 40%;
-	}
-}
-
-@media(min-width: 1200px){
-	form{
-		width: 30%
-	}
-}
-
-@media(max-width: 450px){
-	label{
-		flex-basis: 180px;
-	}
-	.button{
-		margin-left: 1%;
-	}
-}
