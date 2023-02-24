@@ -8,9 +8,11 @@ form {
 	background-color: rgb(255,255,255,0.7);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	margin: 0 5%;
 	min-width: 50vw;
 	top: 5vh;
-	height: 40vh;
+	min-height: 80vh;
 }
+
+
