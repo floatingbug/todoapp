@@ -71,8 +71,4 @@ async function submitForm(e){
 </template>
 
 <style scoped>
-.input_error {
-	margin-left: 0;
-	justify-content: center;
-}
 </style>

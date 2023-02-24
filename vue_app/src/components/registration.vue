@@ -109,11 +109,4 @@ async function submit_form(e){
 </template>
 
 <style scoped>
-.input_flex input[name="confirm_password"] {
-	align-self: flex-start;
-}
-
-form {
-	height: 55vh;
-}
 </style>
