@@ -1,0 +1,27 @@
+--- Format of returned messages (JSON)
+- {"number": error number or nonerror number, "text": error message}
+
+--- List of errors
+- number: 0
+	-> no error.
+
+- number: 1
+	-> fail to send confirm-email.
+
+- number: 2
+	-> user with email allready exists (registration failed).
+
+- number: 3
+	-> server error.
+
+number: 4
+	-> fail do add user (registration failed).
+
+number: 5
+	-> invalid credentials (login failed).
+
+--- List of non error numbers
+- number: 100
+	-> confirm email sent
+
+- number:  

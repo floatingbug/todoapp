@@ -12,7 +12,7 @@ module.exports = async (req, res)=>{
 	//if credentials are not valid, send error
 	//with err_code: 1 to client.
 	if(!check_credentials(credentials)){
-		let error = create_error(1, "credentials are invalid");
+		let error = create_msg(5, "credentials are invalid");
 		res.send(error);
 		return 0;
 	}
@@ -22,12 +22,12 @@ module.exports = async (req, res)=>{
 	//if db error occure send err_code: 3.
 	result = await module_check_existence.check_email(credentials.email);
 	if(result === 2){
-		let error = create_error(2, "User with that email allready exists");
+		let error = create_msg(2, "User with that email allready exists");
 		res.send(error);
 		return 0;
 	}
 	if(result === 3){
-		let error = create_error(3, "Server error occured, please contact me");
+		let error = create_msg(3, "Server error occured, please contact me");
 		res.send(error);
 		return 0;
 	}
@@ -39,24 +39,25 @@ module.exports = async (req, res)=>{
 	//add new user.
 	result = await module_add_user(credentials);
 	if(result === 3){
-		let error = create_error(3, "server error occured, please contact me");
+		let error = create_msg(3, "server error occured, please contact me");
 		res.send(error);
 		return 0;
 	}
 	if(!result){
-		let error = create_error(4, "fail to add new user, please try again later");
+		let error = create_msg(4, "fail to add new user, please try again later");
 		res.send (error);
 		return 0;
 	}
 	else{
 		result = await sendEmail(credentials);
 		if(result === 1){
-			let error = create_error(5, "fail to send confirm email");
+			let error = create_msg(1, "fail to send confirm email");
 			res.send(error);
 			return 0;
 		}
 		else{
-			res.send("{confirm email was sent}");
+			let msg = create_msg(100, "confirm email was send");
+			res.send(msg);
 			return 0;
 		}
 	}
@@ -108,6 +109,6 @@ async function sendEmail(credentials){
 	return 0;
 }
 
-function create_error(number, text){
+function create_msg(number, text){
 	return {number: number, text: text};
 }

@@ -1,11 +1,16 @@
 <script setup>
 import {reactive, watch} from 'vue'
+import {useRouter} from 'vue-router';
 import axios from 'axios'
+
+const router = useRouter();
 let state = reactive({
 	name: "",
 	email: "",
 	password: "",
 	confirm_password: "",
+	registration_failed: false,
+	email_allreadyExists: false
 });
 let input_error = reactive({
 	name: "",
@@ -15,7 +20,7 @@ let input_error = reactive({
 	confirm_password: "",
 	passwords_not_equal: ""
 });
-const API_URL = "https://todoapp-9sp55ojf8-floatingbug.vercel.app";
+const API_URL = "http://localhost:8000";
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let submit = true;
 
@@ -74,8 +79,18 @@ async function submit_form(e){
 		data: credentials,
 		headers: {'Content-Type': 'application/json'}
 	});
+	
 
-	console.log(res.data);
+	if(res.data.number === 1){
+		state.registration_failed = true;
+	}
+	if(res.data.number === 2){
+		state.email_allreadyExists = true;
+	}
+	if(res.data.number === 100){
+		console.log('conf-email was send');
+		router.push({path: '/', query: {conf_email: 'waiting'}});
+	}
 }
 </script>
 
@@ -106,7 +121,17 @@ async function submit_form(e){
 	<div class="input_error">{{input_error.passwords_not_equal}}</div>
 	<input type="submit" value="submit" v-on:click="submit_form">
 </form>
+<div class="registration_failed" v-if="state.registration_failed">Sending confirm-email failed.</div>
+<div class="email_allreadyExists" v-if="state.email_allreadyExists">User with that e-mail allready exists.</div>
 </template>
 
 <style scoped>
+.registration_failed, .email_allreadyExists{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 10%;
+	color: red;
+	font-size: 1.2rem;
+}
 </style>

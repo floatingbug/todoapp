@@ -53,8 +53,13 @@ async function submitForm(e){
 	
 	router.push('/todo');
 }
+
+function testRouter(){
+	router.push({path: '/', query: {name: "value"}});
+}
 </script>
 <template>
+<button v-on:click="testRouter">routerTest</button>
 <form ref='ref_form' v-on:submit.prevent="submitForm">
 	<h1>Login</h1>
 		<div class="input_flex">
