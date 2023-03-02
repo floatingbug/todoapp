@@ -5,14 +5,20 @@ const httpServer = require('http').createServer(app);
 const body_parser = require('body-parser');
 const router = require('./router');
 const cors = require('cors');
-const session = require('express-session');
+let session = require('express-session');
 const mongoStore = require('connect-mongo');
 const serveStatic = require('serve-static');
 const PORT = process.env.PORT || 8000;
+const store = mongoStore.create({
+	mongoUrl: 'mongodb://localhost/testdb'
+});
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(cors());
+app.use(cors({
+	origin: 'http://localhost:5173',
+	credentials: true
+}));
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended: false}));
 app.use(session({
@@ -20,11 +26,9 @@ app.use(session({
 	//dont save session data again into db, just load if request was made
 	resave: false,
 	//dont save a session if no data is attached to req.session
-	saveUninitialized: false,
-	store: mongoStore.create({
-		mongoUrl: 'mongodb://localhost/testdb'
-	})
+	saveUninitialized: false
 }));
+
 
 app.use('/', router);
 

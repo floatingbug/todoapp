@@ -1,5 +1,5 @@
 <script setup>
-import {reactive, watch} from 'vue'
+import {reactive, watch, inject} from 'vue'
 import {useRouter} from 'vue-router';
 import axios from 'axios'
 
@@ -20,7 +20,7 @@ let input_error = reactive({
 	confirm_password: "",
 	passwords_not_equal: ""
 });
-const API_URL = "http://localhost:8000";
+const API_URL = inject('API_URL');
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let submit = true;
 
@@ -89,7 +89,7 @@ async function submit_form(e){
 	}
 	if(res.data.number === 100){
 		console.log('conf-email was send');
-		router.push({path: '/', query: {conf_email: 'waiting'}});
+		router.push({path: '/', query: {conf_email: 1}});
 	}
 }
 </script>

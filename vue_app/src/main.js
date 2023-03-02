@@ -19,5 +19,6 @@ const router = createRouter({
 });
 
 const app = createApp(App)
+app.provide('API_URL', 'http://localhost:8000');
 app.use(router)
 app.mount('#app')

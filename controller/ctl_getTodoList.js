@@ -1,3 +1,7 @@
 module.exports = (req, res)=>{
-	res.send({msg: "send from server"});
+	console.log(req.session.user);
+	console.log(req.session);
+	console.log(req.cookies);
+	res.send("hello");
 };
+

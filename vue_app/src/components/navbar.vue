@@ -5,6 +5,7 @@
 <template>
 <ul>
 	<li><router-link to="/">Home</router-link></li>
+	<li><router-link to="/todo">todo</router-link></li>
 	<li>
 		<router-link to="/login">login</router-link>
 		<router-link to="/registration">registration</router-link>
