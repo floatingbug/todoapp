@@ -1,10 +1,11 @@
 <script setup>
 import {ref, reactive, watch} from 'vue';
-import {useRouter} from 'vue-router';
+import {useRouter, useRoute} from 'vue-router';
 import axios from 'axios';
 const API_URL = "http://localhost:8000"
 
 const router = useRouter();
+const route = useRoute();
 let ref_form = ref(null);
 let state = reactive({
 	name: "",
@@ -54,12 +55,8 @@ async function submitForm(e){
 	router.push('/todo');
 }
 
-function testRouter(){
-	router.push({path: '/', query: {name: "value"}});
-}
 </script>
 <template>
-<button v-on:click="testRouter">routerTest</button>
 <form ref='ref_form' v-on:submit.prevent="submitForm">
 	<h1>Login</h1>
 		<div class="input_flex">

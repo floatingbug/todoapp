@@ -24,7 +24,7 @@ module.exports = async (req, res)=>{
 		return 0;
 	}
 	//login success: create session 
-	req.session.user = {name: name};
+	req.session.user = {name: name, password: password};
 	res.send({msg: "login success"});
 	
 };
