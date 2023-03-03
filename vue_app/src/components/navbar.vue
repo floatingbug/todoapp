@@ -3,9 +3,11 @@
 </script>
 
 <template>
-<ul>
-	<li><router-link to="/">Home</router-link></li>
-	<li><router-link to="/todo">todo</router-link></li>
+<ul class="ul_nav">
+	<li>
+		<li><router-link to="/">Home</router-link></li>
+		<li><router-link to="/todo">todo</router-link></li>
+	</li>
 	<li>
 		<router-link to="/login">login</router-link>
 		<router-link to="/registration">registration</router-link>
@@ -14,39 +16,53 @@
 </template>
 
 <style>
-ul {
-	margin: 0;
-	display: flex;
+.ul_nav {
+	background-color: rgb(255,255,255,0.7);
 	padding: 0;
-	justify-content: space-evenly;
-	align-items: center;
-	background-color: black;
+	margin: 0;
 	height: 5vh;
-}
-
-li {
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
 	list-style-type: none;
 }
 
-li>*{
-	color:white;
-	text-decoration: none;
+/*select all flex-items*/
+.ul_nav>li {
+	flex: 1;
+	gap: 5%;
+	flex-grow: .5;
 }
 
-ul>li:first-child{
-	margin-right: auto;
-	margin-left: 2%;
-}
-
-ul>li:nth-child(2){
+/*login and password links are together in last li-element*/
+.ul_nav>li:last-child {
 	display: flex;
-	justify-content: space-between;
-	width: 120px;
-	margin-right:2%
+	justify-content: flex-end;
+	margin-right: 3%;
 }
 
-ul>li:nth-child(2) :first-child {
-	border-right: 2px solid white;
-	padding-right: 6px;
+.ul_nav>li:last-child *{
+	flex-grow: 0;
+	flex-basis: 5%;
+}
+
+/*home, todo and so on are together in first li-element*/
+.ul_nav>li:first-child {
+	display:flex;
+	margin-left: 3%;
+}
+
+.ul_nav>li:first-child *{
+	flex-grow: 0;
+	flex-basis: 5%;
+}
+
+.ul_nav>li * {
+	text-decoration: none;
+	color: black
+}
+
+.ul_nav>li * {
+	font-size: 1.3rem;
 }
 </style>

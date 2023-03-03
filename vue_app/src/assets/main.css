@@ -1,8 +1,13 @@
 body {
+	padding: 0;
 	margin: 0;
 	background-color: grey;
 }
 
+#app {
+	position: relative;
+	height: 100vh;
+}
 form {
 	position: relative;
 	background-color: rgb(255,255,255,0.7);
@@ -16,7 +21,6 @@ form {
 	min-height: 40vh;
 	max-height: 80vh;
 }
-
 form h1 {
 	margin: 0 auto;
 	margin-bottom: 10%;
@@ -42,6 +46,7 @@ form input[type="submit"] {
 
 .input_flex input, label {
 	flex: 1;
+	font-size: 1.3rem;
 }
 
 .input_error {

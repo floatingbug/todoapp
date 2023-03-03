@@ -19,6 +19,7 @@ onMounted(()=>{
 </script>
 
 <template>
+	<h1>Home</h1>
 	<div class="conf_email" v-if="state.conf_email_sent">
 		Please confirm e-mail.
 	</div>

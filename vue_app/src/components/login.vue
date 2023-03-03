@@ -1,6 +1,6 @@
 <script setup>
 import {ref, reactive, watch, inject} from 'vue';
-import {useRouter} from 'vue-router';
+import {useRouter, useRoute} from 'vue-router';
 import axios from 'axios';
 
 const API_URL = inject('API_URL');
@@ -59,6 +59,7 @@ async function submitForm(e){
 
 </script>
 <template>
+
 <form ref='ref_form' v-on:submit.prevent="submitForm">
 	<h1>Login</h1>
 		<div class="input_flex">

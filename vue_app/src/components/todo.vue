@@ -25,22 +25,52 @@ onMounted(async()=>{
 	});
 	console.log(result);
 });
-
 </script>
 
 <template>
-<h1>todo</h1>
-<ul v-if="todos.length > 0">
+<button v-on:click="test">get todos</button>
+<ul class="ul_chat" v-if="todos.length > 0">
 	<li v-for="t in todos">
 		{{t.todo}}
 	</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
+	<li>test item</li>
 </ul>
 <addTodo />
-<button v-on:click="test">test</button>
 </template>
 
 <style scoped>
-li, ul{
-	background-color: rgb(255,255,255,0.3);
+.ul_chat {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 10vh;
+	bottom: 10vh;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+	min-height: 40vh;
+	max-height: 80vh;
+	max-width: 100vh;
+	overflow-y: auto;
+	font-size: 1.3rem;
+	list-style-type: none;
 }
 </style>
