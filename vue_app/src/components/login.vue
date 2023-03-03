@@ -1,9 +1,9 @@
 <script setup>
-import {ref, reactive, watch} from 'vue';
-import {useRouter, useRoute} from 'vue-router';
+import {ref, reactive, watch, inject} from 'vue';
+import {useRouter} from 'vue-router';
 import axios from 'axios';
-const API_URL = "http://localhost:8000"
 
+const API_URL = inject('API_URL');
 const router = useRouter();
 const route = useRoute();
 let ref_form = ref(null);
@@ -44,8 +44,10 @@ async function submitForm(e){
 			method: 'post',
 			url: `${API_URL}/login`,
 			data: formData,
-			headers: {'content-type': 'application/json'}
+			headers: {'content-type': 'application/json'},
+			withCredentials: true
 		});
+		console.log(res);
 	}
 	catch(error){
 		console.log("there was an error bro:", error);
