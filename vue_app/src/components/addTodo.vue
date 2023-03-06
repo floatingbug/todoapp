@@ -3,33 +3,38 @@ import {reactive, inject} from 'vue';
 import axios from 'axios';
 
 let state = reactive({
-	todo: ""
+	text: ""
 });
 let todoInputEmpty = false;
 let API_URL = inject('API_URL');
 
+//add todo to server
 async function submitForm(e){
 	e.preventDefault();
-	if(state.todo === ""){
+
+	//check if input is not empty
+	if(state.text === ""){
 		todoInputEmpty = true;
 		return 0;
 	}
-
-	const credentials = JSON.stringify(state);
+	
+	const todo = JSON.stringify(state);
 
 	const result = await axios({
-		mathod: 'post',
+		method: 'post',
+		data: todo,
 		url: `${API_URL}/addtodo`,
-		data: credentials,
 		headers: {'Content-Type': 'application/json'}
 	});
+	
+	console.log(result);
 }
 </script>
 
 
 <template>
 <form>
-	<input type="text" v-model="state.todo">
+	<input type="text" v-model="state.text">
 	<input type="submit" v-on:click="submitForm" value="submit">
 </form>
 </template>
