@@ -2,10 +2,13 @@
 import {onMounted, reactive, inject, computed} from 'vue';
 import axios from 'axios';
 import addTodo from './addTodo.vue';
+import getTodolist from '../js/getTodolist.js';
 
 let todos = reactive([]);
 const API_URL = inject('API_URL');
 const css_colors = {itemSelected: 'DarkSeaGreen'};
+
+//make delete button visible if at least one item is selected.
 let selected = computed(()=>{
 	for(let i = 0; i<todos.length; i++){
 			if(todos[i].isSelected === true){
@@ -14,25 +17,13 @@ let selected = computed(()=>{
 		}
 });
 
-async function test(){
-	let res = await axios({
-		method: 'get',
-		url: `${API_URL}/todo`,
-		withCredentials: true
-	});
-};
-
-onMounted(async()=>{
-	let result;
-
-	result = await axios({
-		method: 'get',
-		url: `${API_URL}/todo`,
-		withCredentials: true
-	});
-	console.log(result);
+//when the page is rendered, retrieve the todo-list from the server.
+//getTodolist adds todos from the server to todos.
+onMounted(()=>{
+	getTodolist(API_URL, axios);
 });
 
+//select and unselect items.
 function selectItem(id){
 	todos[id].isSelected = !todos[id].isSelected;
 }
@@ -40,7 +31,7 @@ function selectItem(id){
 </script>
 
 <template>
-<button v-on:click="test">get todos</button>
+<button v-on:click="getTodolist(API_URL, axios)">get todos</button>
 <button v-if="selected">remove</button>
 <ul class="ul_chat" v-if="todos.length > 0">
 	<li v-for="t in todos" v-on:click="selectItem(t.id)" v-bind:class="{selected: t.isSelected}">

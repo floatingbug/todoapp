@@ -26,6 +26,9 @@ number: 6
 number: 7
 	-> text proberty is an empty string.
 
+number: 8
+	-> insert into db failed.
+
 --- List of non error numbers
 - number: 100
 	-> confirm email sent

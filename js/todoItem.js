@@ -1,7 +1,7 @@
-function TodoItem(id, text){
-	this.id = id;
+function TodoItem(text){
 	this.text = text;
-	this.isSelected = false;
+	this.isDone = false;
+	this.isImportant = false;
 }
 
 export default TodoItem;
