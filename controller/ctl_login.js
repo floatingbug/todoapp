@@ -14,20 +14,20 @@ module.exports = async (req, res)=>{
 	const result = await module_check_existence.check_user(name, password);
 	
 	//return db-error
-	if(result === 3){
+	if(result.number === 3){
 		res.send({err_code: 3});
 		return 0;
 	} 
 	//return user not found
-	if(result === 0){
+	if(result.number === 0){
 		res.send({err_code: 0});
 		return 0;
 	}
 	//login success: create session 
-	console.log(name);
-	console.log(password);
+	const email = result.email;
 	req.session.user = {
 		name: name,
+		email: email,
 		password: password
 	};
 	res.send({msg: "login success"});

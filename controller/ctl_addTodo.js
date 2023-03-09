@@ -1,7 +1,16 @@
 const create_msg = require('./create_msg');
 const module_addTodo = require('../module/module_addTodo');
+const TodoItem = require('../js/todoItem');
 
 module.exports = async function(req, res){
+
+	//check if the user is authenticated.
+	if(req.session === undefined || req.session.user === undefined || req.session.user.email === undefined){
+		let msg = create_msg(9, "no authorization (user need to login)");
+		res.send(msg);
+		return 0;
+	}
+	const email = req.session.user.email;
 
 	//check if text property is in payload.
 	if(!('text' in req.body)){
@@ -18,17 +27,17 @@ module.exports = async function(req, res){
 		return 0;
 	}
 
-	//create todo object for db.
-	todoItem = new TodoItem(req.body.text);
+	//create todoItem for db.
+	const todoItem = new TodoItem(req.body.text, email);
 
-	/**************email must replace to req.session.user.email*************/
-	const result = module_addTodo(req.body, "bob@yahoo.de");
-	
+	//add todoItem to db.
+	const result = await module_addTodo(todoItem, email);
 	if(result === 0){
 		let msg = create_msg(0, "todo inserted into db");
 		res.send(msg);
 	}
 	else if(result === 8){
+	console.log("--------------------------------->", result);
 		let msg = create_msg(8, "insert into db failed");
 		res.send(msg);
 	}

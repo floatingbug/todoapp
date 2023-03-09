@@ -1,7 +1,10 @@
 <script setup>
 import {reactive, inject} from 'vue';
 import axios from 'axios';
+import getTodolist from '../js/getTodolist.js';
 
+let todolist = inject("todolist");
+let todos = inject("todos");
 let state = reactive({
 	text: ""
 });
@@ -19,16 +22,25 @@ async function submitForm(e){
 	}
 	
 	const todo = JSON.stringify(state);
-
-	const result = await axios({
-		method: 'post',
-		data: todo,
-		url: `${API_URL}/addtodo`,
-		headers: {'Content-Type': 'application/json'}
-	});
 	
-	console.log(result);
+	let result;
+	try{
+		result = await axios({
+			method: 'post',
+			data: todo,
+			url: `${API_URL}/addtodo`,
+			headers: {'Content-Type': 'application/json'},
+			withCredentials: true
+		});
+	}
+	catch(error){
+		console.log(error);
+	}
+	
+	await getTodolist(API_URL, axios, todos);
+	todolist.value.scrollTop = todolist.value.scrollHeight;
 }
+
 </script>
 
 

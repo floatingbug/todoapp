@@ -2,7 +2,7 @@ const client = require('./create_mongo_client');
 
 module.exports = {
 	check_email: async (email)=>{
-		let result;
+		let result = {number: 3};
 
 		try{
 			await client.connect();
@@ -25,7 +25,7 @@ module.exports = {
 		}
 	},
 	check_user: async (name, password)=>{
-		let result;
+		let result = {number: 3};
 
 		try{
 			await client.connect();
@@ -35,16 +35,18 @@ module.exports = {
 		}
 		catch(error){
 			console.log("error in module module_check_existence.js in function check_login:", error);
-			return 3;
+			return result;
 		}
 		finally{
 			client.close()
 		}
 		if(result === null){
-			return 0;
+			result = {number: 0};
+			return result;
 		}
 		else{
-			return 2;
+			result.number = 2;
 		}
+		return result;
 	}
 };

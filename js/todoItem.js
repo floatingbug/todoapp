@@ -1,7 +1,8 @@
-function TodoItem(text){
+function TodoItem(text, email){
 	this.text = text;
 	this.isDone = false;
 	this.isImportant = false;
+	this.email = email;
 }
 
-export default TodoItem;
+module.exports = TodoItem;

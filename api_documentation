@@ -14,23 +14,30 @@
 - number: 3
 	-> server error.
 
-number: 4
+- number: 4
 	-> fail do add user (registration failed).
 
-number: 5
+- number: 5
 	-> invalid credentials (login failed).
 
-number: 6
+- number: 6
 	-> no text property for todo was in payload.
 
-number: 7
+- number: 7
 	-> text proberty is an empty string.
 
-number: 8
+- number: 8
 	-> insert into db failed.
+
+- number: 9
+	-> no authorization (user need to login)
+
+-number: 10 
+	-> fail to get todos
 
 --- List of non error numbers
 - number: 100
 	-> confirm email sent
 
-- number:  
+- number: 101
+	-> todos sent to client 
